@@ -1,0 +1,220 @@
+@prefix : <http://www.bbc.co.uk/ontologies/business#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.bbc.co.uk/ontologies/business> .
+
+<http://www.bbc.co.uk/ontologies/business> rdf:type owl:Ontology ;
+                                            owl:versionIRI <http://www.bbc.co.uk/ontologies/business/0.5> ;
+                                            owl:imports <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+                                            <http://purl.org/dc/elements/1.1/creator> <http://uk.linkedin.com/in/amaalmohamed> ,
+                                                                                      <http://www.bbc.co.uk/blogs/internet/authors/Jeremy_Tarling> ;
+                                            <http://purl.org/dc/elements/1.1/date> "2014-11-09"^^xsd:date ;
+                                            <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by/4.0/> ;
+                                            <http://www.bbc.co.uk/ontologies/provenance/canonicalLocation> "https://repo.dev.bbc.co.uk/services/linked-data/ontologies/domain/news/business-news-0.5.ttl"^^xsd:string ;
+                                            <http://www.bbc.co.uk/ontologies/provenance/changeReason> "added sharedId property for integration of companies with business data service"@en-gb ;
+                                            <http://www.bbc.co.uk/ontologies/provenance/provided> "2014-11-11T13:22:28+00:00"^^xsd:dateTime ;
+                                            <http://www.bbc.co.uk/ontologies/provenance/provider> <mailto:sam.starling@bbc.co.uk> ;
+                                            <http://www.bbc.co.uk/ontologies/provenance/public> "true"^^xsd:boolean ;
+                                            <http://www.bbc.co.uk/ontologies/provenance/slug> "business"^^xsd:string ;
+                                            <http://www.bbc.co.uk/ontologies/provenance/version> "0.5"^^xsd:double ;
+                                            rdfs:comment "The Business News Ontology describes the concepts that occur in BBC busines news"^^xsd:string ;
+                                            rdfs:label "Business News Ontology"^^xsd:string ;
+                                            owl:priorVersion <http://www.bbc.co.uk/ontologies/business/0.4> ;
+                                            owl:versionInfo "0.5"^^xsd:string .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.bbc.co.uk/ontologies/business/companyLocation
+<http://www.bbc.co.uk/ontologies/business/companyLocation> rdf:type owl:ObjectProperty ;
+                                                           rdfs:domain <http://www.bbc.co.uk/ontologies/business/Company> ;
+                                                           rdfs:range <http://www.bbc.co.uk/ontologies/coreconcepts/Place> ;
+                                                           rdfs:comment "property to associate a company with a place where it is located, registered or trades"^^xsd:string ;
+                                                           rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/business> ;
+                                                           rdfs:label "company location"^^xsd:string .
+
+
+###  http://www.bbc.co.uk/ontologies/business/hasShare
+<http://www.bbc.co.uk/ontologies/business/hasShare> rdf:type owl:ObjectProperty ;
+                                                    rdfs:domain <http://www.bbc.co.uk/ontologies/business/PublicCompany> ;
+                                                    rdfs:range <http://www.bbc.co.uk/ontologies/business/Share> ;
+                                                    rdfs:comment "property to associate a Public Company a Share"^^xsd:string ;
+                                                    rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/business> ;
+                                                    rdfs:label "has share"^^xsd:string .
+
+
+###  http://www.bbc.co.uk/ontologies/business/inIndex
+<http://www.bbc.co.uk/ontologies/business/inIndex> rdf:type owl:ObjectProperty ;
+                                                   rdfs:domain <http://www.bbc.co.uk/ontologies/business/Share> ;
+                                                   rdfs:range <http://www.bbc.co.uk/ontologies/business/Index> ;
+                                                   rdfs:comment "property to associate a Share with an Index"^^xsd:string ;
+                                                   rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/business> ;
+                                                   rdfs:label "in index"^^xsd:string .
+
+
+###  http://www.bbc.co.uk/ontologies/business/listing
+<http://www.bbc.co.uk/ontologies/business/listing> rdf:type owl:ObjectProperty ;
+                                                   rdfs:domain <http://www.bbc.co.uk/ontologies/business/Share> ;
+                                                   rdfs:range <http://www.bbc.co.uk/ontologies/business/Market> ;
+                                                   rdfs:comment "property to associate a company with an exchange or stock market where it is listed"^^xsd:string ;
+                                                   rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/business> ;
+                                                   rdfs:label "listing"^^xsd:string .
+
+
+###  http://www.bbc.co.uk/ontologies/business/parentCompany
+<http://www.bbc.co.uk/ontologies/business/parentCompany> rdf:type owl:ObjectProperty ;
+                                                         rdfs:domain <http://www.bbc.co.uk/ontologies/business/Company> ;
+                                                         rdfs:range <http://www.bbc.co.uk/ontologies/business/Company> ;
+                                                         rdfs:comment "property to associate a company with a parent company"^^xsd:string ;
+                                                         rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/business> ;
+                                                         rdfs:label "parent company"^^xsd:string .
+
+
+###  http://www.bbc.co.uk/ontologies/business/primaryListing
+<http://www.bbc.co.uk/ontologies/business/primaryListing> rdf:type owl:ObjectProperty ;
+                                                          rdfs:subPropertyOf <http://www.bbc.co.uk/ontologies/business/listing> ;
+                                                          rdfs:domain <http://www.bbc.co.uk/ontologies/business/Share> ;
+                                                          rdfs:range <http://www.bbc.co.uk/ontologies/business/Market> ;
+                                                          rdfs:comment "property to associate a company with an exchange or stock market where it has its primary listing"^^xsd:string ;
+                                                          rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/business> ;
+                                                          rdfs:label "primary listing"^^xsd:string .
+
+
+###  http://www.bbc.co.uk/ontologies/business/secondaryListing
+<http://www.bbc.co.uk/ontologies/business/secondaryListing> rdf:type owl:ObjectProperty ;
+                                                            rdfs:subPropertyOf <http://www.bbc.co.uk/ontologies/business/listing> ;
+                                                            rdfs:domain <http://www.bbc.co.uk/ontologies/business/Share> ;
+                                                            rdfs:range <http://www.bbc.co.uk/ontologies/business/Market> ;
+                                                            rdfs:comment "property to associate a company with an exchange or stock market where it has its secondary listing"^^xsd:string ;
+                                                            rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/business> ;
+                                                            rdfs:label "secondary listing"^^xsd:string .
+
+
+###  http://www.bbc.co.uk/ontologies/business/sector
+<http://www.bbc.co.uk/ontologies/business/sector> rdf:type owl:ObjectProperty ;
+                                                  rdfs:domain <http://www.bbc.co.uk/ontologies/business/Company> ;
+                                                  rdfs:range <http://www.bbc.co.uk/ontologies/business/Sector> ;
+                                                  rdfs:comment "property to associate a company with a sector"^^xsd:string ;
+                                                  rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/business> ;
+                                                  rdfs:label "sector"^^xsd:string .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.bbc.co.uk/ontologies/business/marketTicker
+<http://www.bbc.co.uk/ontologies/business/marketTicker> rdf:type owl:DatatypeProperty ;
+                                                        rdfs:domain <http://www.bbc.co.uk/ontologies/business/Market> ;
+                                                        rdfs:range rdfs:Literal ;
+                                                        rdfs:comment "literal property to associate a market its ticker symbol"^^xsd:string ;
+                                                        rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/business> ;
+                                                        rdfs:label "market ticker symbol"^^xsd:string .
+
+
+###  http://www.bbc.co.uk/ontologies/business/shareId
+<http://www.bbc.co.uk/ontologies/business/shareId> rdf:type owl:DatatypeProperty ;
+                                                   rdfs:domain <http://www.bbc.co.uk/ontologies/business/PublicCompany> ;
+                                                   rdfs:range rdfs:Literal ;
+                                                   rdfs:comment "literal property to associate a company with its share ticker symbol"^^xsd:string ;
+                                                   rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/business> ;
+                                                   rdfs:label "share ID for BBC business data service"^^xsd:string .
+
+
+###  http://www.bbc.co.uk/ontologies/business/shareTicker
+<http://www.bbc.co.uk/ontologies/business/shareTicker> rdf:type owl:DatatypeProperty ;
+                                                       rdfs:domain <http://www.bbc.co.uk/ontologies/business/Share> ;
+                                                       rdfs:range rdfs:Literal ;
+                                                       rdfs:comment "literal property to associate a share with its ticker symbol"^^xsd:string ;
+                                                       rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/business> ;
+                                                       rdfs:label "share ticker symbol"^^xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.bbc.co.uk/ontologies/business/Company
+<http://www.bbc.co.uk/ontologies/business/Company> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://www.bbc.co.uk/ontologies/coreconcepts/Organisation> ;
+                                                   rdfs:comment "A company featured in BBC business news, a specialisation of core:Organisation"^^xsd:string ;
+                                                   rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/business> ;
+                                                   rdfs:label "A company featured in BBC business news"^^xsd:string .
+
+
+###  http://www.bbc.co.uk/ontologies/business/Index
+<http://www.bbc.co.uk/ontologies/business/Index> rdf:type owl:Class ;
+                                                 rdfs:comment "an Index featured in BBC business news"^^xsd:string ;
+                                                 rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/business> ;
+                                                 rdfs:label "An Index of a market featured in BBC business news"^^xsd:string .
+
+
+###  http://www.bbc.co.uk/ontologies/business/Market
+<http://www.bbc.co.uk/ontologies/business/Market> rdf:type owl:Class ;
+                                                  rdfs:subClassOf <http://www.bbc.co.uk/ontologies/coreconcepts/Organisation> ;
+                                                  rdfs:comment "A stock market (or exchange) featured in BBC business news, a specialisation of core:Organisation"^^xsd:string ;
+                                                  rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/business> ;
+                                                  rdfs:label "A stock market featured in BBC business news"^^xsd:string .
+
+
+###  http://www.bbc.co.uk/ontologies/business/PrivateCompany
+<http://www.bbc.co.uk/ontologies/business/PrivateCompany> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <http://www.bbc.co.uk/ontologies/business/Company> ;
+                                                          rdfs:comment "A private (Ltd) company featured in BBC business news, a specialisation of biz:Company"^^xsd:string ;
+                                                          rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/business> ;
+                                                          rdfs:label "A private (Ltd) company featured in BBC business news"^^xsd:string .
+
+
+###  http://www.bbc.co.uk/ontologies/business/PublicCompany
+<http://www.bbc.co.uk/ontologies/business/PublicCompany> rdf:type owl:Class ;
+                                                         rdfs:subClassOf <http://www.bbc.co.uk/ontologies/business/Company> ;
+                                                         rdfs:comment "A public company (PLC) featured in BBC business news, a specialisation of biz:Company"^^xsd:string ;
+                                                         rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/business> ;
+                                                         rdfs:label "A public company (PLC) featured in BBC business news"^^xsd:string .
+
+
+###  http://www.bbc.co.uk/ontologies/business/Sector
+<http://www.bbc.co.uk/ontologies/business/Sector> rdf:type owl:Class ;
+                                                  rdfs:subClassOf <http://www.bbc.co.uk/ontologies/coreconcepts/Theme> ;
+                                                  rdfs:comment "A marker sector featured in BBC business news, a specialisation of core:Theme"^^xsd:string ;
+                                                  rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/business> ;
+                                                  rdfs:label "A market sector featured in BBC business news"^^xsd:string .
+
+
+###  http://www.bbc.co.uk/ontologies/business/Share
+<http://www.bbc.co.uk/ontologies/business/Share> rdf:type owl:Class ;
+                                                 rdfs:comment "A share featured in BBC business news"^^xsd:string ;
+                                                 rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/business> ;
+                                                 rdfs:label "A share in a public company featured in BBC business news"^^xsd:string .
+
+
+###  http://www.bbc.co.uk/ontologies/coreconcepts/Organisation
+<http://www.bbc.co.uk/ontologies/coreconcepts/Organisation> rdf:type owl:Class .
+
+
+###  http://www.bbc.co.uk/ontologies/coreconcepts/Place
+<http://www.bbc.co.uk/ontologies/coreconcepts/Place> rdf:type owl:Class .
+
+
+###  http://www.bbc.co.uk/ontologies/coreconcepts/Theme
+<http://www.bbc.co.uk/ontologies/coreconcepts/Theme> rdf:type owl:Class .
+
+
+###  http://www.bbc.co.uk/ontologies/provenance/Ontology
+<http://www.bbc.co.uk/ontologies/provenance/Ontology> rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.bbc.co.uk/ontologies/business
+<http://www.bbc.co.uk/ontologies/business> rdf:type owl:NamedIndividual ,
+                                                    <http://www.bbc.co.uk/ontologies/provenance/Ontology> .
+
+
+###  Generated by the OWL API (version 5.1.0) https://github.com/owlcs/owlapi/
